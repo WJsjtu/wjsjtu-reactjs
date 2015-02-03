@@ -52,7 +52,6 @@ module.exports = function(grunt) {
 					if (result) {
 						result = reactTools.transform(result, {});
 						if (options.wrapper) {
-
 							result.replace("React.createElement", options.replaceWord);
 							result = "(function(React, window){var " + options.replaceWord + " = React.createElement;" + result + "})(React, window);";
 						}
