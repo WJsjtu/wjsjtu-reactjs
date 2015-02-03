@@ -49,10 +49,12 @@ grunt.initConfig({
   reactjs: {
      main:{
       files: [{
-        wrapper: true,
         src:"src/jsx/datepicker.jsx",
         dest: "dist/js/datepicker.js"
-      }]
+      }],
+      options: {
+        wrapper: true
+      }
     }
  }
 });
