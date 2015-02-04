@@ -26,7 +26,7 @@ It will generate `"(function(React, window){var "` + `replaceWord` + `" = React.
 
 ### Usage examples
 
-#### Basic compression
+#### Basic usage
 
 This configuration will just use `react-tools` to transfer files using the default options.
 
