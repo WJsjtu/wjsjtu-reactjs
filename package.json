@@ -1,6 +1,6 @@
 {
   "name": "wjsjtu-reactjs",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Transfer JSX files of React.js.",
   "main": "index.js",
   "scripts": {
