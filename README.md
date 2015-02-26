@@ -18,12 +18,19 @@ Default: `false`
 
 Turn on or off wrapper with default options. If an `wrapper` is specified, it uses `replaceWord` to replace `React.createElement` compiled code, for it often appears in compiled code, this will make the size of minified files smaller.
 
+#### prefix
+Type: `String`
+Default: `"(function(React, window){"`
+
+#### suffix
+Type: `String`
+Default: `"})(React, window);"`
 
 #### replaceWord
 Type: `String`
 Default: `"__ReactCreateElement"`
 
-It will generate `"(function(React, window){var "` + `replaceWord` + `" = React.createElement;" + result + "})(React, window);"` ,which wraps the code with closure to make it works better when using minify tools.
+It will generate ,with default `prefix` and `suffix` options, `"(function(React, window){"` + `"var "` + `replaceWord` + `" = React.createElement;" + result + "})(React, window);"` ,which wraps the code with closure to make it works better when using minify tools.
 
 ### Usage examples
 
@@ -42,7 +49,7 @@ grunt.initConfig({
 ```
 
 
-Specify `wrapper: false` to wrap the compiled code.
+Specify `wrapper: true` to wrap the compiled code.
 
 ```js
 // Project configuration.
@@ -55,6 +62,26 @@ grunt.initConfig({
       }],
       options: {
         wrapper: true
+      }
+    }
+ }
+});
+```
+
+Specify `prefix` and `suffix` to work with AMD
+```js
+// Project configuration.
+grunt.initConfig({
+  reactjs: {
+     main:{
+      files: [{
+        src:"src/jsx/datepicker.jsx",
+        dest: "dist/js/datepicker.js"
+      }],
+      options: {
+        wrapper: true,
+        prefix: "define([react], function(React){",
+        suffix: "return datepicker; });"
       }
     }
  }
