@@ -18,6 +18,7 @@ Default: `false`
 
 Turn on or off wrapper with default options. If an `wrapper` is specified, it uses `replaceWord` to replace `React.createElement` compiled code, for it often appears in compiled code, this will make the size of minified files smaller.
 
+
 #### replaceWord
 Type: `String`
 Default: `"__ReactCreateElement"`
