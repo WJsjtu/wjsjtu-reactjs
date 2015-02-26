@@ -20,6 +20,8 @@ module.exports = function(grunt) {
 		var options = this.options({
 			encoding: grunt.file.defaultEncoding,
 			wrapper: false,
+			preffix: "(function(React, window){",
+			suffix: "})(React, window);",
 			replaceWord: "__ReactCreateElement",
 		});
 
@@ -53,7 +55,7 @@ module.exports = function(grunt) {
 						result = reactTools.transform(result, {});
 						if (options.wrapper) {
 							result = result.replace(/React.createElement/g, options.replaceWord);
-							result = "(function(React, window){var " + options.replaceWord + " = React.createElement;" + result + "})(React, window);";
+							result = options.preffix + "var " + options.replaceWord + " = React.createElement;\n" + result + options.suffix;
 						}
 						grunt.file.write(dest, result, writeOptions);
 					}
